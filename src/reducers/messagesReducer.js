@@ -2,7 +2,7 @@ const initialState = {
   message: ''
 }
 
-export default (state = initialState, action) => {
+export default messagesReducer = (state = initialState, action) => {
   
   switch(action.type) {
 
