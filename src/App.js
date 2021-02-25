@@ -90,31 +90,25 @@ class App extends Component {
           } */}
           <Route exact path='/clubs' render={ () => <ClubList currentUser={currentUser} /> } />
           <Route exact path='/clubs/new' render={ () => <ClubForm currentUser={currentUser}  /> } />
-          {
-            memberships.length
+          {memberships.length
             ? <Route exact path='/clubs/:id' render={ ({match}) => {
                 const club = reifyClubById(match.params.id);
                 return <ClubContainer {...club} />
               }}/>
-            : null
-          }
+            : null}
           <Route exact path='/bestsellers' render={ () => 
               <NYTimes clubsCurrentUserMods={clubsCurrentUserMods} /> 
           }/>
-          {
-            currentUser
+          {currentUser
             ? <Route exact path='/:username/settings' render={ () =>
                 <EditUser currentUser={currentUser} />
               }/>
-            : null
-          }
-          {
-            currentUser
+            : null}
+          {currentUser
             ? <Route exact path='/:username' render={ () => 
                 <ProfilePage {...currentUser} />
               }/>
-            : null
-          }
+            : null}
         </Switch>
       </Container>
     </>
