@@ -19,8 +19,9 @@ function LoginForm({loginRequest}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleChange = (setFn, e) => {
+  const handleChange = setFn => e => {
     const value = e.currentTarget.value;
+    console.log(value)
     setFn(value);
   }
 
@@ -41,8 +42,8 @@ function LoginForm({loginRequest}) {
         Login
       </Typography>
       <FormControl fullWidth>
-        <TextField label='Username' onChange={ e => handleChange(setUsername, e) } />
-        <TextField type='password' label='Password' onChange={ e => handleChange(setPassword, e) } />
+        <TextField label='Username' onChange={handleChange(setUsername)} />
+        <TextField type='password' label='Password' onChange={handleChange(setPassword)} />
         <Button
           onClick={handleSubmit}
           variant='outlined'

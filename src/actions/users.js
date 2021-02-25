@@ -33,6 +33,7 @@ const loginRequest = payload => {
     'body': JSON.stringify(payload)
   };
 
+  console.log(requestObj)
   return dispatch => {
     begin(dispatch);
     fetch('/auth/login', requestObj)

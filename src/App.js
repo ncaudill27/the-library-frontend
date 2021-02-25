@@ -81,13 +81,13 @@ class App extends Component {
           <Route exact path='/' render={ () =>
             <WelcomeContainer currentUser={currentUser} currentUsersClubs={currentUsersClubs} />
           }/>
-          {
+          {/* {
             currentUser && memberships.length
             ? <Route exact path='/avatar-selection' render={ () =>
                 <AvatarSelection currentUser={currentUser} clubsCurrentUserMods={clubsCurrentUserMods} />
               }/>
             : null
-          }
+          } */}
           <Route exact path='/clubs' render={ () => <ClubList currentUser={currentUser} /> } />
           <Route exact path='/clubs/new' render={ () => <ClubForm currentUser={currentUser}  /> } />
           {
