@@ -2,7 +2,7 @@ const initialState = {
   message: ''
 }
 
-export default messagesReducer = (state = initialState, action) => {
+const messagesReducer = (state = initialState, action) => {
   
   switch(action.type) {
 
@@ -16,3 +16,5 @@ export default messagesReducer = (state = initialState, action) => {
       return state;
   }
 }
+
+export default messagesReducer
