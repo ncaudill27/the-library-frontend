@@ -56,7 +56,7 @@ const CommentOptions = ({id, toggleEditable, deleteComment, currentUserIsMod, is
       <Slide  direction='left' in={shown} mountOnEnter unmountOnExit>
         <div>
           { isContentOwner() && <Button className={classes.edit} variant='contained' onClick={toggleEditable}>EDIT</Button> }
-          { ( currentUserIsMod || isContentOwner() ) && <Button className={classes.delete} variant='contained' onClick={deleteComment}>DELETE</Button> }
+          { ( currentUserIsMod || isContentOwner() ) && <Button data-comment-id={id} className={classes.delete} variant='contained' onClick={deleteComment}>DELETE</Button> }
         </div>
       </Slide>
     </Box>
