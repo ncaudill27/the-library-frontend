@@ -1,4 +1,5 @@
 import { flashMessage } from './messages';
+import { apiEnvironment } from "../utils/apiEnvironment";
 
 const begin = func => func({type: "BEGIN_USERS_REQUEST"});
 const token = localStorage.getItem('token');
@@ -6,7 +7,7 @@ const token = localStorage.getItem('token');
 const fetchUsers = () => {
   return (dispatch) => {
     begin(dispatch);
-    fetch('/api/v1/users')
+    fetch(apiEnvironment('/api/v1/users'))
     .then(res => res.json())
     .then(json => dispatch(addUsers(json)));
   };
@@ -36,7 +37,7 @@ const loginRequest = payload => {
   console.log(requestObj)
   return dispatch => {
     begin(dispatch);
-    fetch('/auth/login', requestObj)
+    fetch(apiEnvironment('/auth/login'), requestObj)
     .then(res => res.json())
     .then(response => {      
       if (response.failure) return dispatch(flashMessage(response.failure));
@@ -58,7 +59,7 @@ const authorizeToken = () => {
   };
   return dispatch => {
     begin(dispatch);
-    fetch('/auth/auto', requestObj)
+    fetch(apiEnvironment('/auth/auto'), requestObj)
     .then(res => res.json())
     .then(response => {
       if (response.failure) return dispatch(flashMessage(response.failure));
@@ -79,7 +80,7 @@ const userPostRequest = payload => {
   
   return dispatch => {
     begin(dispatch);
-    fetch('/api/v1/users', requestObj)
+    fetch(apiEnvironment('/api/v1/users', requestObj))
     .then(res => res.json())
     .then(response => {
       if (response.errors) return dispatch(flashMessage(response.errors));

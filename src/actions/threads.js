@@ -1,9 +1,11 @@
+import { apiEnvironment } from "../utils/apiEnvironment";
+
 const begin = func => func({type: "BEGIN_THREADS_REQUEST"});
 
 const fetchThreads = () => {
   return (dispatch) => {
     begin(dispatch);
-    fetch('/api/v1/boards')
+    fetch(apiEnvironment('/api/v1/boards'))
     .then(res => res.json())
     .then(json => dispatch(addThreads(json)));
   };
@@ -27,7 +29,7 @@ const postThread = (payload) => {
   };
   return dispatch => {
     begin(dispatch);
-    fetch('/api/v1/boards', requestObj)
+    fetch(apiEnvironment('/api/v1/boards', requestObj))
     .then(res => res.json())
     .then(response => {
       if (response.errors) return console.log(response.errors);

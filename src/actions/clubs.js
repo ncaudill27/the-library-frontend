@@ -1,5 +1,6 @@
 import { addClub } from './users';
 import { flashMessage } from './messages';
+import { apiEnvironment } from '../utils/apiEnvironment';
 
 const begin = func => func({type: "BEGIN_CLUBS_REQUEST"});
 const token = localStorage.getItem('token');
@@ -7,7 +8,7 @@ const token = localStorage.getItem('token');
 const getClubsRequest = () => {
   return (dispatch) => {
     begin(dispatch);
-    fetch('/api/v1/clubs')
+    fetch(apiEnvironment('/api/v1/clubs'))
     .then(res => res.json())
     .then(json => dispatch(addClubs(json)));
   };
@@ -31,7 +32,7 @@ const postClubRequest = payload => {
 
   return dispatch => {
     begin(dispatch);
-    return fetch('/api/v1/clubs', requestObj)
+    return fetch(apiEnvironment('/api/v1/clubs', requestObj))
     .then(res => res.json())
     .then( async response => {
       console.log(response);
@@ -57,7 +58,7 @@ const patchClubRequest = (payload, clubId) => {
 
   return dispatch => {
     begin(dispatch);
-    fetch(`/api/v1/clubs/${clubId}`, requestObj)
+    fetch(apiEnvironment(`/api/v1/clubs/${clubId}`), requestObj)
     .then( res => res.json() )
     .then( response => {
       if (response.error) console.log(response.error);

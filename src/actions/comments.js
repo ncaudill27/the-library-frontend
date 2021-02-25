@@ -1,7 +1,9 @@
+import { apiEnvironment } from "../utils/apiEnvironment";
+
 const fetchComments = () => {
   return dispatch => {
     dispatch({type: "BEGIN_COMMENTS_REQUEST"});
-    fetch('/api/v1/comments')
+    fetch(apiEnvironment('/api/v1/comments'))
     .then(res => res.json())
     .then(json => dispatch(addComments(json)));
   };
@@ -15,7 +17,7 @@ const addComments = comments => ({
 const postComment = payload => (
   dispatch => {
     dispatch({type: "BEGIN_COMMENTS_REQUEST"});
-    fetch('/api/v1/comments', {
+    fetch(apiEnvironment('/api/v1/comments'), {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +45,7 @@ const deleteCommentRequest = commentId => {
 
   return dispatch => {
     dispatch({type: "BEGIN_COMMENTS_REQUEST"});
-    fetch(`/api/v1/comments/${commentId}`, requestObj)
+    fetch(apiEnvironment(`/api/v1/comments/${commentId}`), requestObj)
     .then(res => res.json())
     .then(response => {
       dispatch(deleteComment(response))
