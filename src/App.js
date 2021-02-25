@@ -12,8 +12,8 @@ import ClubContainer from './containers/ClubContainer';
 import ClubForm from './components/ClubForm';
 import FlashMessage from './components/FlashMessage';
 import EditUser from './components/EditUser';
-import AvatarSelection from './components/AvatarSelection';
-import NotFound from './components/NotFound';
+// import AvatarSelection from './components/AvatarSelection';
+// import NotFound from './components/NotFound';
 
 import { getClubsRequest } from './actions/clubs';
 import { fetchUsers } from './actions/users';
