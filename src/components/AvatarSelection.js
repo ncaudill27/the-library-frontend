@@ -48,7 +48,7 @@
 //       </div>
 //     );
 //   }
-  
+
 //   fetchSelections = async () => {
 //     const photos = await this.unsplash.search.collections(this.state.search, this.state.page, 5)
 //     .then(toJson)
@@ -59,7 +59,7 @@
 //     );
 //     this.setState({ photos: photos.flat() });
 //   }
-  
+
 //   nextPage = () => this.setState( prevState => {
 //     return { page: prevState.page + 1 }
 //   }, this.fetchSelections);
@@ -70,13 +70,13 @@
 //     }, this.fetchSelections)
 //   }
 
-//   navigation = () => 
+//   navigation = () =>
 //     <div className='navigation'>
 //       <img onClick={this.previousPage} src={LeftArrow} alt='previous page arrow' />
 //       <h2>{this.state.page}</h2>
 //       <img onClick={this.nextPage} src={RightArrow} alt='next page arrow' />
 //     </div>;
-  
+
 //   updateUserAvatar = () => {
 //     const {
 //       props: {
@@ -138,20 +138,20 @@
 //         toUpdate
 //       },
 //       updateClubAvatar,
-//       updateUserAvatar 
+//       updateUserAvatar
 //     } = this;
 
 //     toUpdate === username ? updateUserAvatar() : updateClubAvatar();
 //   }
 
-//   searchBar = () => 
+//   searchBar = () =>
 //     <form onSubmit={this.handleSearch}>
 //       <label>Category
 //       <input type='text' name='search' value={this.state.search} onChange={this.handleChange} />
 //       </label>
 //       <input type='submit' value='Search' />
 //     </form>
-  
+
 //   render() {
 //     const {
 //       state: {
@@ -168,7 +168,7 @@
 //       setUpdateTarget,
 //       handleUpdate
 //     } = this;
-    
+
 //     return (
 //       <div className='Avatar-selection'>
 //         <h2>Choose an avatar!</h2>
@@ -200,6 +200,5 @@
 // }
 
 // const mapStateToProps = ({users, clubs}) => ({memberships: users.memberships, clubs: clubs.data});
-
 
 // export default connect( mapStateToProps, { updateUserRequest, patchClubRequest } )(AvatarSelection);

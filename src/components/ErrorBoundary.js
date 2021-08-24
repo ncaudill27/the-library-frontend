@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from "react"
 
 class ErrorBoundary extends Component {
   constructor(props) {
-    super(props);
-    this.state = { hasError: false };
+    super(props)
+    this.state = { hasError: false }
   }
 
   static getDerivedStateFromError(error) {
@@ -11,7 +11,7 @@ class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.log(error, errorInfo);
+    console.log(error, errorInfo)
   }
 
   render() {
@@ -19,8 +19,8 @@ class ErrorBoundary extends Component {
       return <h1>Something went wrong.</h1>
     }
 
-    return this.props.children;
+    return this.props.children
   }
 }
 
-export default ErrorBoundary;
+export default ErrorBoundary

@@ -1,9 +1,10 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from "react"
+import { NavLink } from "react-router-dom"
 
-const StyledLink = props =>
+const StyledLink = props => (
   <div className={props.styling}>
     <NavLink {...props} />
   </div>
+)
 
-export default StyledLink;
+export default StyledLink

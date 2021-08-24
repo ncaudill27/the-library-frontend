@@ -1,20 +1,18 @@
 const initialState = {
-  message: ''
+  message: "",
 }
 
 const messagesReducer = (state = initialState, action) => {
-  
-  switch(action.type) {
-
+  switch (action.type) {
     case "FLASH_MESSAGE":
-      return {...state, message: action.message};
+      return { ...state, message: action.message }
 
     case "REMOVE_FLASH":
-      return {...state, message: ''};
-    
-    default: 
-      return state;
+      return { ...state, message: "" }
+
+    default:
+      return state
   }
 }
 
-export default messagesReducer;
+export default messagesReducer

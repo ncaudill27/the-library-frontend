@@ -1,13 +1,10 @@
 const flashMessage = message => ({
   type: "FLASH_MESSAGE",
-  message
-});
+  message,
+})
 
 const removeFlash = () => ({
-  type: "REMOVE_FLASH"
-});
+  type: "REMOVE_FLASH",
+})
 
-export {
-  flashMessage,
-  removeFlash
-}
+export { flashMessage, removeFlash }
