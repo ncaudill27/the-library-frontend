@@ -3,9 +3,9 @@ import { connect } from "react-redux"
 import { addClub } from "../actions/users"
 import { logOutUser } from "../actions/users"
 
-import StyledHeader from "../components/header"
+import Header from "../components/header"
 
-function Header({ currentUser, logOutUser, currentUsersClubs }) {
+function HeaderContainer({ currentUser, logOutUser, currentUsersClubs }) {
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
 
@@ -13,7 +13,7 @@ function Header({ currentUser, logOutUser, currentUsersClubs }) {
   const handleClose = () => setAnchorEl(null)
 
   return (
-    <StyledHeader
+    <Header
       anchorEl={anchorEl}
       open={open}
       close={handleClose}
@@ -27,4 +27,4 @@ function Header({ currentUser, logOutUser, currentUsersClubs }) {
 
 const mapStateToProps = ({ users }) => ({ currentUser: users.currentUser })
 
-export default connect(mapStateToProps, { addClub, logOutUser })(Header)
+export default connect(mapStateToProps, { addClub, logOutUser })(HeaderContainer)

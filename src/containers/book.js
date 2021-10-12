@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import { updateUserRequest } from "../actions/users"
 import { patchClubRequest } from "../actions/clubs"
 
-import BookShow from "../components/BookShow"
+import BookShow from "./bookShow"
 import BookPreview from "../components/bookPreview"
 
 function Book({
@@ -23,15 +23,13 @@ function Book({
   const [updateTarget, updateTargetSet] = useState(currentUser.username)
   const setUpdateTarget = e => updateTargetSet(e.target.value)
 
-  const linkDestination = () => {
-    return updateTarget === currentUser.username
+  const linkDestination =
+    updateTarget === currentUser.username
       ? `/${updateTarget}`
       : `/clubs/${updateTarget}`
-  }
 
-  const handleUpdate = () => {
+  const handleUpdate = () =>
     updateTarget === currentUser.username ? userUpdate() : clubUpdate()
-  }
 
   const userUpdate = () => {
     const payload = {
@@ -64,7 +62,7 @@ function Book({
       confirm={handleUpdate}
       currentUser={currentUser}
       description={description}
-      destination={linkDestination()}
+      destination={linkDestination}
       toggleShowing={toggleShowing}
       clubsCurrentUserIsMod={clubsCurrentUserMods()}
     />

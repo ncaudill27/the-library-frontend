@@ -4,7 +4,7 @@ import { memberLeaveRequest } from "../actions/users"
 import ClubMenu from "../components/ClubMenu"
 import ThreadShow from "../components/ThreadShow"
 import ThreadForm from "../components/ThreadForm"
-import BookShow from "../components/BookShow"
+import BookShow from "../containers/bookShow"
 /* ------------
   Material imports
 ---------- */
