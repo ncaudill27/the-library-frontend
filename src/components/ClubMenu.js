@@ -72,7 +72,7 @@ const ClubMenu = ({
   currentUserIsMember,
   memberships,
   memberJoinRequest,
-  toggleModMembers,
+  toggleUserManagement,
 }) => {
   const classes = useStyles()
 
@@ -135,7 +135,7 @@ const ClubMenu = ({
         <ModOptions
           currentUserIsMod={currentUserIsMod}
           handleClose={handleClose}
-          toggleModMembers={toggleModMembers}
+          toggleUserManagement={toggleUserManagement}
         />
       </Menu>
     </>
