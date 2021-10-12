@@ -16,7 +16,7 @@ const BookSelect = ({
   confirm,
   username,
   destination,
-  clubsCurrentUserisMod,
+  clubsCurrentUserIsMod,
 }) => {
   const classes = useStyles()
 
@@ -28,8 +28,8 @@ const BookSelect = ({
           <MenuItem value={username} className={classes.option}>
             {username}
           </MenuItem>
-          {clubsCurrentUserisMod.length > 0 &&
-            clubsCurrentUserisMod.map(club => (
+          {clubsCurrentUserIsMod.length > 0 &&
+            clubsCurrentUserIsMod.map(club => (
               <MenuItem
                 key={club.id}
                 value={club.id}
