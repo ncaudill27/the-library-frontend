@@ -2,9 +2,7 @@ import React, { useState } from "react"
 import { connect } from "react-redux"
 import { updateUserRequest } from "../actions/users"
 import { patchClubRequest } from "../actions/clubs"
-
 import BookShow from "./BookShow"
-import BookSelect from "./bookSelect"
 
 import {
   FormControl,
@@ -147,16 +145,7 @@ function Book({
         </Grid>
         <Typography>{description}</Typography>
       </Grid>
-      {currentUser && (
-        <BookSelect
-          title={title}
-          update={setUpdateTarget}
-          confirm={handleUpdate}
-          username={currentUser.username}
-          destination={linkDestination()}
-          clubsCurrentUserisMod={clubsCurrentUserMods()}
-        />
-      )}
+      {currentUser ? renderBookSelectForm() : null}
     </Box>
   )
 
