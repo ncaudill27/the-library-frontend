@@ -3,10 +3,9 @@ import { connect } from "react-redux"
 import { addClub } from "../actions/users"
 import { logOutUser } from "../actions/users"
 
-import Header from "../components/header"
+import StyledHeader from "../components/header"
 
-function SidebarContainer({ currentUser, logOutUser, currentUsersClubs }) {
-
+function Header({ currentUser, logOutUser, currentUsersClubs }) {
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
 
@@ -14,7 +13,7 @@ function SidebarContainer({ currentUser, logOutUser, currentUsersClubs }) {
   const handleClose = () => setAnchorEl(null)
 
   return (
-    <Header
+    <StyledHeader
       anchorEl={anchorEl}
       open={open}
       close={handleClose}
@@ -28,6 +27,4 @@ function SidebarContainer({ currentUser, logOutUser, currentUsersClubs }) {
 
 const mapStateToProps = ({ users }) => ({ currentUser: users.currentUser })
 
-export default connect(mapStateToProps, { addClub, logOutUser })(
-  SidebarContainer
-)
+export default connect(mapStateToProps, { addClub, logOutUser })(Header)

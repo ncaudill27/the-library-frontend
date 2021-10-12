@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import { Switch, Route } from "react-router-dom"
 
 import "./App.css"
-import SidebarContainer from "./containers/SideBarContainer"
+import Header from "./containers/header"
 import WelcomeContainer from "./components/WelcomeContainer"
 import NYTimes from "./containers/NYTimes"
 import ProfilePage from "./components/ProfilePage"
@@ -84,7 +84,7 @@ class App extends Component {
 
     return (
       <>
-        <SidebarContainer currentUsersClubs={currentUsersClubs} />
+        <Header currentUsersClubs={currentUsersClubs} />
         {message ? <FlashMessage message={message} /> : null}
         <Container maxWidth="sm">
           <Switch>
