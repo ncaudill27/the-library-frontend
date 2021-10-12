@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import Book from "../components/Book"
+import Book from "./book"
 /* ------------
   Material imports
 ------------ */
