@@ -2,14 +2,15 @@ import React from "react"
 
 import ClubList from "../components/ClubList"
 
-import {
-  makeStyles,
-  Menu,
-  MenuItem,
-  Link,
-} from "@material-ui/core"
+import { Link, Menu, MenuItem, makeStyles } from "@material-ui/core"
 
-const HeaderMenu = ({ anchorEl, open, close, currentUser, currentUsersClubs }) => {
+const HeaderMenu = ({
+  anchorEl,
+  open,
+  close,
+  currentUser,
+  currentUsersClubs,
+}) => {
   const classes = useStyles()
 
   return (
@@ -23,14 +24,17 @@ const HeaderMenu = ({ anchorEl, open, close, currentUser, currentUsersClubs }) =
       onClose={close}
     >
       <MenuLink
+        href={`/${currentUser.username}`}
+        text="Profile"
+        handleClose={close}
+      />
+      <MenuLink
         href="/bestsellers"
         text="NY Times Bestsellers"
         handleClose={close}
       />
       <MenuLink href="/clubs" text="Browse Clubs" handleClose={close} />
-      {!!currentUsersClubs.length ? (
-        <MenuItem disabled>Your clubs</MenuItem>
-      ) : null}
+      {!!currentUsersClubs.length && <MenuItem disabled>Your clubs</MenuItem>}
       {currentUser && <ClubList styling="sidebar" handleClose={close} />}
       {currentUser && (
         <MenuItem className={classes.create}>

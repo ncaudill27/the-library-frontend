@@ -38,13 +38,13 @@ const Header = ({
         <Typography variant="h6" className={classes.title}>
           The Library
         </Typography>
-        {currentUser ? (
+        {currentUser && (
           <Button onClick={logOutUser} color="inherit" size="small">
             <Link href="/" color="inherit" underline="none">
               Log Out
             </Link>
           </Button>
-        ) : null}
+        )}
         <HeaderMenu
           anchorEl={anchorEl}
           open={open}
