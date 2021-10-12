@@ -1,76 +1,13 @@
 import React, { useState, useEffect, createRef } from "react"
 
 import Book from "../components/bookShow"
+import Fallback from "../components/bookShowFallback"
+import Missing from '../components/bookShowMissing'
 /* ----------
   Material imports
 ----------- */
-import {
-  Button,
-  Link,
-  Typography,
-  Paper,
-} from "@material-ui/core"
-import { makeStyles } from "@material-ui/core/styles"
 
 const { REACT_APP_GOOGLE_BOOKS_KEY } = process.env
-
-const useStyles = makeStyles(theme => ({
-  paper: {
-    padding: theme.spacing(1),
-    backgroundColor: "#f0f0f0",
-    overflow: "auto",
-  },
-  image: {
-    height: "auto",
-    width: "auto",
-  },
-  fallback: {
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(4),
-    padding: theme.spacing(1),
-  },
-  button: {
-    backgroundColor: theme.palette.primary.dark,
-    color: "#fff",
-    marginBottom: theme.spacing(1),
-  },
-}))
-
-function Missing() {
-  const classes = useStyles()
-
-  return (
-    <Paper className={classes.paper}>
-      <Typography variant="h5">Select a book</Typography>
-      <Link
-        href="/bestsellers"
-        underline="none"
-        component={Button}
-        className={classes.button}
-      >
-        New York Times Bestsellers
-      </Link>
-    </Paper>
-  )
-}
-function Fallback({ hide }) {
-  const classes = useStyles()
-
-  const [message, setMessage] = useState("loading...")
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setMessage(`Sorry, additional information for this book is unavailable.`)
-    }, 1500)
-    return () => clearTimeout(timer)
-  }, [])
-
-  return (
-    <Paper elevation={3} onClick={hide} className={classes.fallback}>
-      <Typography variant="h5">{message}</Typography>
-    </Paper>
-  )
-}
 
 function BookShow({ isbn, hide }) {
   const infoRef = createRef()
