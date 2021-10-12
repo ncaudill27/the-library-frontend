@@ -1,6 +1,7 @@
 import React from "react"
 
 import { Link, Typography, makeStyles, Box, Grid } from "@material-ui/core"
+import BookSelect from "./bookSelect"
 
 const BookPreview = ({
   src,
@@ -8,7 +9,7 @@ const BookPreview = ({
   author,
   update,
   confirm,
-  username,
+  currentUser,
   description,
   destination,
   toggleShowing,
@@ -39,7 +40,7 @@ const BookPreview = ({
           title={title}
           update={update}
           confirm={confirm}
-          username={username}
+          username={currentUser.username}
           destination={destination}
           clubsCurrentUserIsMod={clubsCurrentUserIsMod}
         />

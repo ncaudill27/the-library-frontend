@@ -3,8 +3,8 @@ import { connect } from "react-redux"
 import { updateUserRequest } from "../actions/users"
 import { patchClubRequest } from "../actions/clubs"
 
-import BookShow from "./BookShow"
-import BookPreview from "./bookPreview"
+import BookShow from "../components/BookShow"
+import BookPreview from "../components/bookPreview"
 
 function Book({
   src,
@@ -62,7 +62,7 @@ function Book({
       author={author}
       update={setUpdateTarget}
       confirm={handleUpdate}
-      username={currentUser.username}
+      currentUser={currentUser}
       description={description}
       destination={linkDestination()}
       toggleShowing={toggleShowing}
