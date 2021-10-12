@@ -1,5 +1,4 @@
 import React from "react"
-import ClubList from "../components/ClubList"
 
 import {
   makeStyles,
@@ -8,14 +7,20 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  Menu,
-  MenuItem,
   Link,
 } from "@material-ui/core"
 import MenuIcon from "@material-ui/icons/Menu"
 import HeaderMenu from "./headerMenu"
 
-const Header = ({}) => {
+const Header = ({
+  open,
+  close,
+  anchorEl,
+  logOutUser,
+  handleMenu,
+  currentUser,
+  currentUsersClubs,
+}) => {
   const classes = useStyles()
 
   return (
@@ -40,7 +45,13 @@ const Header = ({}) => {
             </Link>
           </Button>
         ) : null}
-        <HeaderMenu />
+        <HeaderMenu
+          anchorEl={anchorEl}
+          open={open}
+          close={close}
+          currentUser={currentUser}
+          currentUsersClubs={currentUsersClubs}
+        />
       </Toolbar>
     </AppBar>
   )
@@ -56,19 +67,6 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
   },
-  menuItem: {
-    backgroundColor: "#fff",
-    color: "#000",
-    marginBottom: theme.spacing(0.25),
-  },
-  create: {
-    backgroundColor: theme.palette.primary.dark,
-    color: "#fff",
-  },
-  link: {
-    color: theme.palette.secondary.dark,
-  },
-  menu: {
-    backgroundColor: theme.palette.secondary.main,
-  },
 }))
+
+export default Header

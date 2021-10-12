@@ -1,6 +1,15 @@
 import React from "react"
 
-const HeaderMenu = () => {
+import ClubList from "../components/ClubList"
+
+import {
+  makeStyles,
+  Menu,
+  MenuItem,
+  Link,
+} from "@material-ui/core"
+
+const HeaderMenu = ({ anchorEl, open, close, currentUser, currentUsersClubs }) => {
   const classes = useStyles()
 
   return (
@@ -11,18 +20,18 @@ const HeaderMenu = () => {
         horizontal: "right",
       }}
       open={open}
-      onClose={handleClose}
+      onClose={close}
     >
       <MenuLink
         href="/bestsellers"
         text="NY Times Bestsellers"
-        handleClose={handleClose}
+        handleClose={close}
       />
-      <MenuLink href="/clubs" text="Browse Clubs" handleClose={handleClose} />
-      {!!currentUsersClubs().length ? (
+      <MenuLink href="/clubs" text="Browse Clubs" handleClose={close} />
+      {!!currentUsersClubs.length ? (
         <MenuItem disabled>Your clubs</MenuItem>
       ) : null}
-      {currentUser && <ClubList styling="sidebar" handleClose={handleClose} />}
+      {currentUser && <ClubList styling="sidebar" handleClose={close} />}
       {currentUser && (
         <MenuItem className={classes.create}>
           <Link href="/clubs/new" color="inherit" underline="none">
@@ -34,8 +43,8 @@ const HeaderMenu = () => {
   )
 }
 
-// forward ref so mui knows where to put menu
-const MenuLink = forwardRef(({ href, text, handleClose }, ref) => {
+//! why is this forwarding ref?
+const MenuLink = React.forwardRef(({ href, text, handleClose }, ref) => {
   const classes = useStyles()
 
   return (
@@ -46,5 +55,23 @@ const MenuLink = forwardRef(({ href, text, handleClose }, ref) => {
     </MenuItem>
   )
 })
+
+const useStyles = makeStyles(theme => ({
+  menuItem: {
+    backgroundColor: "#fff",
+    color: "#000",
+    marginBottom: theme.spacing(0.25),
+  },
+  create: {
+    backgroundColor: theme.palette.primary.dark,
+    color: "#fff",
+  },
+  link: {
+    color: theme.palette.secondary.dark,
+  },
+  menu: {
+    backgroundColor: theme.palette.secondary.main,
+  },
+}))
 
 export default HeaderMenu
