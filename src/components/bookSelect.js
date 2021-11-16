@@ -4,19 +4,18 @@ import { updateUserRequest } from "../actions/users"
 import { patchClubRequest } from "../actions/clubs"
 
 import {
-  FormControl,
-  Select,
-  InputLabel,
-  MenuItem,
   Link,
-  makeStyles,
+  Select,
   Button,
+  MenuItem,
+  InputLabel,
+  makeStyles,
+  FormControl,
 } from "@material-ui/core"
 
 const BookSelect = ({
   title,
   isbn13,
-  destination,
   currentUser,
   patchClubRequest,
   updateUserRequest,
@@ -24,7 +23,7 @@ const BookSelect = ({
 }) => {
   const classes = useStyles()
 
-  const [updateTarget, updateTargetSet] = useState(currentUser.username)
+  const [updateTarget, updateTargetSet] = useState('')
   const setUpdateTarget = e => updateTargetSet(e.target.value)
 
   const linkDestination =
@@ -54,11 +53,12 @@ const BookSelect = ({
 
     updateUserRequest(payload, currentUser.id)
   }
+
   return (
     <>
       <FormControl fullWidth>
         <InputLabel>Set {title} as featured book for:</InputLabel>
-        <Select name="isbn" onChange={setUpdateTarget}>
+        <Select name="isbn" value={updateTarget} onChange={setUpdateTarget}>
           <MenuItem value={currentUser.username} className={classes.option}>
             {currentUser.username}'s profile
           </MenuItem>

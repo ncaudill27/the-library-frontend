@@ -2,7 +2,6 @@ import React from "react"
 
 import { Link, Typography, makeStyles, Box, Grid } from "@material-ui/core"
 import BookSelect from "./bookSelect"
-import { connect } from "react-redux"
 
 const BookPreview = ({
   src,
