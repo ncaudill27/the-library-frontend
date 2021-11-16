@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { connect } from "react-redux"
 import { updateUserRequest } from "../actions/users"
 import { patchClubRequest } from "../actions/clubs"
@@ -15,10 +15,9 @@ import {
 
 const BookSelect = ({
   title,
-  update,
-  confirm,
-  username,
+  isbn13,
   destination,
+  currentUser,
   patchClubRequest,
   updateUserRequest,
   clubsCurrentUserIsMod,
@@ -33,6 +32,9 @@ const BookSelect = ({
       ? `/${updateTarget}`
       : `/clubs/${updateTarget}`
 
+  const handleUpdate = () =>
+    updateTarget === currentUser.username ? userUpdate() : clubUpdate()
+
   const clubUpdate = () => {
     const payload = {
       club: {
@@ -42,9 +44,6 @@ const BookSelect = ({
 
     patchClubRequest(payload, updateTarget)
   }
-
-  const handleUpdate = () =>
-    updateTarget === currentUser.username ? userUpdate() : clubUpdate()
 
   const userUpdate = () => {
     const payload = {
@@ -59,9 +58,9 @@ const BookSelect = ({
     <>
       <FormControl fullWidth>
         <InputLabel>Set {title} as featured book for:</InputLabel>
-        <Select name="isbn" onChange={update}>
-          <MenuItem value={username} className={classes.option}>
-            {username}'s profile
+        <Select name="isbn" onChange={setUpdateTarget}>
+          <MenuItem value={currentUser.username} className={classes.option}>
+            {currentUser.username}'s profile
           </MenuItem>
           {clubsCurrentUserIsMod.length > 0 &&
             clubsCurrentUserIsMod.map(club => (
@@ -75,7 +74,7 @@ const BookSelect = ({
             ))}
         </Select>
       </FormControl>
-      <Link href={destination} onClick={confirm} underline="none">
+      <Link href={linkDestination} onClick={handleUpdate} underline="none">
         <Button variant="contained" className={classes.button} fullWidth>
           Set
         </Button>

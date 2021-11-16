@@ -12,7 +12,7 @@ function Book({
   clubsCurrentUserMods,
 }) {
   const [showing, showingSet] = useState(false)
-  const toggleShowing = () => showingSet(!showing)  
+  const toggleShowing = () => showingSet(!showing)
 
   return showing ? (
     <BookShow isbn={isbn13} hide={toggleShowing} />
@@ -20,6 +20,7 @@ function Book({
     <BookPreview
       src={src}
       title={title}
+      isbn13={isbn13}
       author={author}
       description={description}
       toggleShowing={toggleShowing}

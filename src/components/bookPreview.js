@@ -8,11 +8,7 @@ const BookPreview = ({
   src,
   title,
   author,
-  update,
-  confirm,
-  currentUser,
   description,
-  destination,
   toggleShowing,
   clubsCurrentUserIsMod,
 }) => {
@@ -36,14 +32,7 @@ const BookPreview = ({
           <Typography>{description}</Typography>
         </Grid>
       </Grid>
-      <BookSelect
-        title={title}
-        update={update}
-        confirm={confirm}
-        username={currentUser.username}
-        destination={destination}
-        clubsCurrentUserIsMod={clubsCurrentUserIsMod}
-      />
+      <BookSelect title={title} clubsCurrentUserIsMod={clubsCurrentUserIsMod} />
     </Box>
   )
 }
