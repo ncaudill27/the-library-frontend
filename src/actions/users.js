@@ -78,12 +78,13 @@ const userPostRequest = payload => {
     },
     body: JSON.stringify(payload),
   }
-
+  console.log("Post request payload", requestObj)
   return dispatch => {
     begin(dispatch)
-    fetch(apiEnvironment("/api/v1/users", requestObj))
+    fetch(apiEnvironment("/api/v1/users"), requestObj)
       .then(res => res.json())
       .then(response => {
+        console.log(response)
         if (response.errors) return dispatch(flashMessage(response.errors))
         localStorage.setItem("token", response.auth_token)
         dispatch(loginUser(response.user.data))

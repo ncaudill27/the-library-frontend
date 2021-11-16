@@ -15,7 +15,7 @@ const BookPreview = ({
 
   return (
     <Box className={classes.root}>
-      <Grid container direction="row" spacing={1} justify="center">
+      <Grid container direction="row" spacing={1} justify="center" spacing={3}>
         <Grid className={classes.image} item xs={3}>
           <img
             className={classes.img}

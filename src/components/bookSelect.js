@@ -23,7 +23,7 @@ const BookSelect = ({
 }) => {
   const classes = useStyles()
 
-  const [updateTarget, updateTargetSet] = useState('')
+  const [updateTarget, updateTargetSet] = useState("")
   const setUpdateTarget = e => updateTargetSet(e.target.value)
 
   const linkDestination =
