@@ -12,6 +12,14 @@ export const theme = createMuiTheme({
       light: "#ffd4d0",
       dark: "#b67371",
     },
+    /* ----------
+      DEFAULT BREAKPOINTS
+      xs, extra-small: 0px
+      sm, small: 600px
+      md, medium: 900px
+      lg, large: 1200px
+      xl, extra-large: 1536px
+    ---------- */
   },
   overrides: {
     MuiPaper: {

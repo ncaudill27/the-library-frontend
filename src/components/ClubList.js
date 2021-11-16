@@ -101,6 +101,7 @@ class ClubList extends Component {
         )}
         {memberships.length && clubs.length
           ? styling === "sidebar"
+          //! fix this nonsense
             ? renderClubsSidebar()
             : renderClubs()
           : null}

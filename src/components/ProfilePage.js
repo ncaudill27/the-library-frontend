@@ -1,5 +1,5 @@
 import React from "react"
-import BookShow from "./BookShow"
+import BookShow from "../containers/bookShow"
 
 import { Typography } from "@material-ui/core"
 
