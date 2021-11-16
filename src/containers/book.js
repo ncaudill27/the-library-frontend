@@ -1,7 +1,4 @@
 import React, { useState } from "react"
-import { connect } from "react-redux"
-import { updateUserRequest } from "../actions/users"
-import { patchClubRequest } from "../actions/clubs"
 
 import BookShow from "./bookShow"
 import BookPreview from "../components/bookPreview"
@@ -11,45 +8,11 @@ function Book({
   title,
   author,
   isbn13,
-  currentUser,
   description,
-  patchClubRequest,
-  updateUserRequest,
   clubsCurrentUserMods,
 }) {
   const [showing, showingSet] = useState(false)
-  const toggleShowing = () => showingSet(!showing)
-
-  const [updateTarget, updateTargetSet] = useState(currentUser.username)
-  const setUpdateTarget = e => updateTargetSet(e.target.value)
-
-  const linkDestination =
-    updateTarget === currentUser.username
-      ? `/${updateTarget}`
-      : `/clubs/${updateTarget}`
-
-  const handleUpdate = () =>
-    updateTarget === currentUser.username ? userUpdate() : clubUpdate()
-
-  const userUpdate = () => {
-    const payload = {
-      user: {
-        favorite_book_isbn13: isbn13,
-      },
-    }
-
-    updateUserRequest(payload, currentUser.id)
-  }
-
-  const clubUpdate = () => {
-    const payload = {
-      club: {
-        active_book_isbn13: isbn13,
-      },
-    }
-
-    patchClubRequest(payload, updateTarget)
-  }
+  const toggleShowing = () => showingSet(!showing)  
 
   return showing ? (
     <BookShow isbn={isbn13} hide={toggleShowing} />
@@ -58,11 +21,7 @@ function Book({
       src={src}
       title={title}
       author={author}
-      update={setUpdateTarget}
-      confirm={handleUpdate}
-      currentUser={currentUser}
       description={description}
-      destination={linkDestination}
       toggleShowing={toggleShowing}
       clubsCurrentUserIsMod={clubsCurrentUserMods()}
     />
@@ -76,11 +35,4 @@ Book.defaultProps = {
   description: "No description posted",
 }
 
-const mapStateToProps = ({ users }) => ({
-  currentUser: users.currentUser,
-})
-
-export default connect(mapStateToProps, {
-  updateUserRequest,
-  patchClubRequest,
-})(Book)
+export default Book

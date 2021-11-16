@@ -1,4 +1,7 @@
 import React from "react"
+import { connect } from "react-redux"
+import { updateUserRequest } from "../actions/users"
+import { patchClubRequest } from "../actions/clubs"
 
 import {
   FormControl,
@@ -16,17 +19,49 @@ const BookSelect = ({
   confirm,
   username,
   destination,
+  patchClubRequest,
+  updateUserRequest,
   clubsCurrentUserIsMod,
 }) => {
   const classes = useStyles()
 
+  const [updateTarget, updateTargetSet] = useState(currentUser.username)
+  const setUpdateTarget = e => updateTargetSet(e.target.value)
+
+  const linkDestination =
+    updateTarget === currentUser.username
+      ? `/${updateTarget}`
+      : `/clubs/${updateTarget}`
+
+  const clubUpdate = () => {
+    const payload = {
+      club: {
+        active_book_isbn13: isbn13,
+      },
+    }
+
+    patchClubRequest(payload, updateTarget)
+  }
+
+  const handleUpdate = () =>
+    updateTarget === currentUser.username ? userUpdate() : clubUpdate()
+
+  const userUpdate = () => {
+    const payload = {
+      user: {
+        favorite_book_isbn13: isbn13,
+      },
+    }
+
+    updateUserRequest(payload, currentUser.id)
+  }
   return (
     <>
       <FormControl fullWidth>
-        <InputLabel>Set {title} for:</InputLabel>
+        <InputLabel>Set {title} as featured book for:</InputLabel>
         <Select name="isbn" onChange={update}>
           <MenuItem value={username} className={classes.option}>
-            {username}
+            {username}'s profile
           </MenuItem>
           {clubsCurrentUserIsMod.length > 0 &&
             clubsCurrentUserIsMod.map(club => (
@@ -59,4 +94,11 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default BookSelect
+const mapStateToProps = ({ users }) => ({
+  currentUser: users.currentUser,
+})
+
+export default connect(mapStateToProps, {
+  updateUserRequest,
+  patchClubRequest,
+})(BookSelect)

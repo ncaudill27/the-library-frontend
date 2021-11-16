@@ -2,6 +2,7 @@ import React from "react"
 
 import { Link, Typography, makeStyles, Box, Grid } from "@material-ui/core"
 import BookSelect from "./bookSelect"
+import { connect } from "react-redux"
 
 const BookPreview = ({
   src,
@@ -32,19 +33,17 @@ const BookPreview = ({
             <Typography variant="h5">{title}</Typography>
           </Link>
           <Typography variant="h5">By: {author}</Typography>
+          <Typography>{description}</Typography>
         </Grid>
-        <Typography>{description}</Typography>
       </Grid>
-      {currentUser && (
-        <BookSelect
-          title={title}
-          update={update}
-          confirm={confirm}
-          username={currentUser.username}
-          destination={destination}
-          clubsCurrentUserIsMod={clubsCurrentUserIsMod}
-        />
-      )}
+      <BookSelect
+        title={title}
+        update={update}
+        confirm={confirm}
+        username={currentUser.username}
+        destination={destination}
+        clubsCurrentUserIsMod={clubsCurrentUserIsMod}
+      />
     </Box>
   )
 }
